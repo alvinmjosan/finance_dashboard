@@ -4,7 +4,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
 
-A robust, full-stack finance tracking and dashboard application optimized for performance and an ultra-premium user experience. 
+A frontend dashboard prototype simulating a finance tracking workflow, focused on performance and a polished user experience. 
 
 Built on a blazing fast **Next.js App Router** architecture with **TypeScript** for robust type-safety, and **Redux Toolkit** for predictable and persistent state management.
 
