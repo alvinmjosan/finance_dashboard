@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { setFilters, deleteTransaction, Transaction } from '../../store/financeSlice';
 import { Search, Plus, Edit2, Trash2, Filter } from 'lucide-react';
@@ -13,6 +14,7 @@ export default function TransactionList() {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingTx, setEditingTx] = useState<Transaction | null>(null);
+  const [deletingTxId, setDeletingTxId] = useState<string | null>(null);
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
@@ -133,7 +135,7 @@ export default function TransactionList() {
                     <button className="icon-btn edit-btn" onClick={() => handleEdit(tx)} aria-label="Edit">
                       <Edit2 size={16} />
                     </button>
-                    <button className="icon-btn delete-btn" onClick={() => dispatch(deleteTransaction(tx.id))} aria-label="Delete">
+                    <button className="icon-btn delete-btn" onClick={() => setDeletingTxId(tx.id)} aria-label="Delete">
                       <Trash2 size={16} />
                     </button>
                   </td>
@@ -156,6 +158,33 @@ export default function TransactionList() {
           onClose={() => setIsModalOpen(false)}
           existingTx={editingTx}
         />
+      )}
+
+      {deletingTxId && createPortal(
+        <div className="modal-overlay">
+          <div className="modal-content glass-panel" style={{ maxWidth: '400px', textAlign: 'center' }}>
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Confirm Deletion</h3>
+            <p className="text-secondary" style={{ marginBottom: '1.5rem' }}>Are you sure you want to delete this transaction? This action cannot be undone.</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+              <button 
+                className="btn btn-secondary cancel-btn" 
+                onClick={() => setDeletingTxId(null)}
+              >
+                Cancel
+              </button>
+              <button 
+                className="btn confirm-delete-btn" 
+                onClick={() => {
+                  dispatch(deleteTransaction(deletingTxId));
+                  setDeletingTxId(null);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body
       )}
     </div>
   );

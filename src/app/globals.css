@@ -7,8 +7,7 @@
   --surface-color-translucent: rgba(223, 223, 223, 0.7);
   --text-primary: #2d3748;
   --text-secondary: #4a5568;
-  --border-color: #BFD8D5;
-
+  --border-color: #6e8e8a; /* Darkened pastel teal for strong container outlines */
   --accent-primary: #B1BED5;
   --accent-secondary: #9aa8c0;
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useAppDispatch } from '../../store/hooks';
 import { addTransaction, editTransaction, Transaction } from '../../store/financeSlice';
 import { X } from 'lucide-react';
@@ -55,7 +56,7 @@ export default function TransactionModal({ isOpen, onClose, existingTx }: Transa
     onClose();
   };
 
-  return (
+  return createPortal(
     <div className="modal-overlay">
       <div className="modal-content glass-panel">
         <div className="modal-header">
@@ -133,6 +134,7 @@ export default function TransactionModal({ isOpen, onClose, existingTx }: Transa
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
