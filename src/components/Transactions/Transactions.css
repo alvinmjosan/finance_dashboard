@@ -34,13 +34,16 @@
 
 .btn-primary {
   background: var(--accent-primary);
-  color: white;
+  color: #111827;
+  font-weight: 600;
   box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
 }
 
 .btn-primary:hover {
-  background: var(--accent-secondary);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+  color: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(255, 107, 107, 0.4);
 }
 
 .btn-secondary {
@@ -193,8 +196,32 @@
   justify-content: center;
 }
 
-.edit-btn:hover { color: var(--accent-primary); background: var(--bg-color); }
-.delete-btn:hover { color: var(--danger-color); background: var(--danger-bg); }
+.edit-btn:hover { 
+  color: #fff; 
+  background: var(--accent-primary); 
+  transform: scale(1.15); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
+.delete-btn:hover { 
+  color: #fff; 
+  background: var(--danger-color); 
+  transform: scale(1.15); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
+
+.close-btn:hover {
+  color: #fff;
+  background: var(--danger-color);
+  transform: scale(1.15) rotate(90deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cancel-btn:hover {
+  background: var(--danger-color);
+  color: #fff;
+  border-color: var(--danger-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 .empty-state {
   padding: 3rem;

@@ -60,7 +60,7 @@ export default function TransactionModal({ isOpen, onClose, existingTx }: Transa
       <div className="modal-content glass-panel">
         <div className="modal-header">
           <h3>{existingTx ? 'Edit Transaction' : 'Add New Transaction'}</h3>
-          <button className="icon-btn" onClick={onClose}><X size={20} /></button>
+          <button className="icon-btn close-btn" onClick={onClose}><X size={20} /></button>
         </div>
         
         <form onSubmit={handleSubmit} className="modal-form">
@@ -128,7 +128,7 @@ export default function TransactionModal({ isOpen, onClose, existingTx }: Transa
           </div>
           
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" onClick={onClose}>Cancel</button>
+            <button type="button" className="btn btn-secondary cancel-btn" onClick={onClose}>Cancel</button>
             <button type="submit" className="btn btn-primary">{existingTx ? 'Save Changes' : 'Add Transaction'}</button>
           </div>
         </form>
